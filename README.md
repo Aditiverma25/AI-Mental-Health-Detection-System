@@ -1,82 +1,118 @@
-# Welcome to your Lovable project
+AI Mental Health Detection System
 
-This repository now includes a Node/Express backend located in the `server` directory. The backend handles user authentication, a prediction API, and a basic CBT-style chatbot. To get the backend running:
+An AI-powered multimodal mental health analysis platform that detects and predicts emotional states using text, facial expressions, and audio inputs.
+The system leverages modern machine learning and deep learning techniques to identify stress and emotional patterns in real time.
 
-1. `cd server`
-2. Copy `.env.example` to `.env` and fill in `MONGO_URI` and `JWT_SECRET`.
-3. Run `npm install` and then `npm run dev` to start the server on port 5000.
+🚀 Features
 
-The front‑end makes requests to `http://localhost:5000/api/…` by default.
+🔍 Multimodal Emotion Detection (Text + Facial + Audio)
 
+🧠 AI-Based Stress Level Prediction
 
-## Project info
+💬 Interactive Mental Health Chat Interface
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+📊 Dashboard with Emotional Analytics
 
-## How can I edit this code?
+🔐 Secure Authentication System
 
-There are several ways of editing your application.
+⚡ Real-time Processing
 
-**Use Lovable**
+🎨 Modern UI (React + Vite + TypeScript)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+🏗️ Tech Stack
+Frontend
 
-Changes made via Lovable will be committed automatically to this repo.
+React (Vite)
 
-**Use your preferred IDE**
+TypeScript
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Tailwind CSS / ShadCN UI
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Axios
 
-Follow these steps:
+Backend
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Node.js
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Express.js
 
-# Step 3: Install the necessary dependencies.
-npm i
+REST APIs
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+AI / ML
+
+NLP-based sentiment analysis
+
+Facial emotion recognition models
+
+Audio stress classification
+
+📂 Project Structure
+AI-Mental-Health-Detection-System/
+│
+├── src/                # Frontend source code
+├── public/             # Static assets
+├── server/             # Backend API logic
+├── components/         # Reusable UI components
+├── pages/              # Application pages
+├── hooks/              # Custom React hooks
+├── package.json        # Dependencies
+└── .gitignore          # Ignored files
+⚙️ Installation & Setup
+1️⃣ Clone the Repository
+git clone https://github.com/Aditiverma25/AI-Mental-Health-Detection-System.git
+cd AI-Mental-Health-Detection-System
+2️⃣ Install Dependencies
+npm install
+3️⃣ Start Development Server
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+Backend (if separate):
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+cd server
+npm install
+npm start
+🧪 How It Works
 
-**Use GitHub Codespaces**
+User provides input (text, face, or audio).
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Data is processed through ML models.
 
-## What technologies are used for this project?
+Emotional classification is generated.
 
-This project is built with:
+Dashboard displays mental state insights.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+System flags potential stress indicators.
 
-## How can I deploy this project?
+🎯 Use Cases
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Early stress detection
 
-## Can I connect a custom domain to my Lovable project?
+AI-powered therapy assistance
 
-Yes, you can!
+Academic research
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Behavioral analytics
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Mental health monitoring platforms
+
+🔐 Security Considerations
+
+Sensitive data not stored permanently
+
+.env file excluded via .gitignore
+
+Secure API endpoints
+
+Authentication middleware
+
+📈 Future Improvements
+
+Real-time webcam emotion detection
+
+Deep learning fine-tuned transformer models
+
+Personalized mental health insights
+
+Deployment with Docker
+
+CI/CD integration
