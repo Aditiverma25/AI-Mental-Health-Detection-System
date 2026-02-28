@@ -4,8 +4,7 @@ import { Brain, Shield, Heart, BarChart3, MessageCircle, Sparkles, ChevronRight,
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import heroBg from "@/assets/hero-bg.jpg";
-import brainImg from "@/assets/brain-illustration.png";
-import meditationImg from "@/assets/meditation-illustration.png";
+
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -92,14 +91,19 @@ const Index = () => {
                 <Sparkles className="w-4 h-4" />
                 AI-Powered Emotional Intelligence
               </div>
+
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6">
                 Detect Emotional Patterns{" "}
-                <span className="text-gradient">Before They Become Disorders</span>
+                <span className="text-gradient">
+                  Before They Become Disorders
+                </span>
               </h1>
+
               <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
-                MindSense AI uses advanced emotional analytics to help you understand your mental health, 
+                MindSense AI uses advanced emotional analytics to help you understand your mental health,
                 track behavioral patterns, and receive personalized support.
               </p>
+
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link to="/assessment">
                   <Button variant="hero" size="xl">
@@ -114,22 +118,11 @@ const Index = () => {
                 </a>
               </div>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="mt-12"
-            >
-              <img
-                src={brainImg}
-                alt="AI Brain Analysis"
-                className="w-48 h-48 mx-auto animate-float"
-              />
-            </motion.div>
           </div>
         </div>
       </section>
+
+     
 
       {/* Features */}
       <section id="features" className="py-24 bg-background">
@@ -194,9 +187,7 @@ const Index = () => {
             ))}
           </div>
 
-          <motion.div {...fadeUp} className="flex justify-center mt-12">
-            <img src={meditationImg} alt="Meditation" className="w-40 h-40 rounded-2xl shadow-card" />
-          </motion.div>
+          
         </div>
       </section>
 
@@ -451,3 +442,4 @@ const Index = () => {
 };
 
 export default Index;
+

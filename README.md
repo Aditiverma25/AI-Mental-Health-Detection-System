@@ -1,5 +1,14 @@
 # Welcome to your Lovable project
 
+This repository now includes a Node/Express backend located in the `server` directory. The backend handles user authentication, a prediction API, and a basic CBT-style chatbot. To get the backend running:
+
+1. `cd server`
+2. Copy `.env.example` to `.env` and fill in `MONGO_URI` and `JWT_SECRET`.
+3. Run `npm install` and then `npm run dev` to start the server on port 5000.
+
+The front‑end makes requests to `http://localhost:5000/api/…` by default.
+
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID

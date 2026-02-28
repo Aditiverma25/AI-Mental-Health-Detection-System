@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { RiskMeter } from "@/components/RiskMeter";
 import { MoodScoreCard } from "@/components/MoodScoreCard";
+import * as api from "@/lib/api";
 
 type Tab = "journal" | "voice" | "test";
 
@@ -25,6 +26,7 @@ const Assessment = () => {
   const [journalText, setJournalText] = useState("");
   const [analyzing, setAnalyzing] = useState(false);
   const [results, setResults] = useState<null | "done">(null);
+  const [analysis, setAnalysis] = useState<any>(null);
   const [phqAnswers, setPhqAnswers] = useState<number[]>(Array(9).fill(-1));
 
   const tabs = [
@@ -33,12 +35,25 @@ const Assessment = () => {
     { id: "test" as Tab, label: "PHQ-9 Test", icon: ClipboardList },
   ];
 
-  const handleAnalyze = () => {
+  const handleAnalyze = async () => {
     setAnalyzing(true);
-    setTimeout(() => {
-      setAnalyzing(false);
+    try {
+      let res;
+      if (activeTab === "journal") {
+        res = await api.analyzeJournal(journalText);
+      } else if (activeTab === "test") {
+        res = await api.analyzePHQ(phqAnswers);
+      } else {
+        // voice stub
+        res = { message: "voice analysis not implemented yet" };
+      }
+      setAnalysis(res);
       setResults("done");
-    }, 2500);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setAnalyzing(false);
+    }
   };
 
   return (
@@ -198,6 +213,16 @@ const Assessment = () => {
         )}
 
         {/* Results */}
+        {results === "done" && analysis && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-8 p-6 rounded-2xl gradient-card shadow-card"
+          >
+            <h3 className="font-display text-lg font-semibold text-foreground mb-2">Analysis Result</h3>
+            <pre className="text-sm text-muted-foreground overflow-auto">{JSON.stringify(analysis, null, 2)}</pre>
+          </motion.div>
+        )}
         {results && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}

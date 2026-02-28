@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Brain, Send, Loader2, Heart, Smile, Frown, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
+import * as api from "@/lib/api";
 
 interface Message {
   id: number;
@@ -15,7 +16,7 @@ const initialMessages: Message[] = [
   {
     id: 1,
     role: "assistant",
-    content: "Hi there 💜 I'm your MindSense Companion. I'm here to listen, support, and help you work through your thoughts using evidence-based techniques. How are you feeling today?",
+    content: "Hi there 💜 I'm your MindCare Companion. I'm here to listen, support, and help you work through your thoughts using evidence-based techniques. How are you feeling today?",
     timestamp: new Date(),
   },
 ];
@@ -55,7 +56,7 @@ const Chatbot = () => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
 
     const userMsg: Message = {
@@ -69,20 +70,31 @@ const Chatbot = () => {
     setInput("");
     setIsTyping(true);
 
-    const response = getResponse(input);
-
-    setTimeout(() => {
-      setIsTyping(false);
+    try {
+      const res = await api.chat(input);
       setMessages((prev) => [
         ...prev,
         {
           id: Date.now() + 1,
           role: "assistant",
-          content: response,
+          content: res.reply,
           timestamp: new Date(),
         },
       ]);
-    }, 1500 + Math.random() * 1000);
+    } catch (err) {
+      console.error(err);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          role: "assistant",
+          content: "Sorry, something went wrong.",
+          timestamp: new Date(),
+        },
+      ]);
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   const mood = messages.length > 1 ? detectMood(messages[messages.length - 1].content) : null;
